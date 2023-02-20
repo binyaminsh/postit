@@ -18,9 +18,9 @@ export default async function handler(
     });
 
     try {
-      const { title, postId } = req.body;
-
-      if (!title.length) {
+      const { title, postId } = req.body.data;
+      
+      if (!title) {
         return res
           .status(403)
           .json({ message: "Please do not leave this empty." });
@@ -36,7 +36,9 @@ export default async function handler(
           res.status(200).json(result);
       }
     } catch (error) {
-      res.status(403).json({ err: "Error has occurred." });
+      console.log(error);
+      
+      res.status(403).json({ err: error });
     }
   }
 }

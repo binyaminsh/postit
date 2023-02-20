@@ -4,17 +4,17 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import Post from './components/Post';
 import { PostsType } from './types/Posts';
+import { ReactNode } from 'react';
 
 const allPosts = async () => {
   const response = await axios.get('/api/posts/getPosts');
   return response.data;
 }
 
-export default function Home() {
+export default function Home(): ReactNode {
   const { data, error, isLoading } = useQuery<PostsType[]>({ queryFn: allPosts, queryKey: ['posts']})
-  if(error) return error;
+  //if(error) return error;
   if(isLoading) return 'Loading...'
-  console.log(data);
   
   return (
     <main>
