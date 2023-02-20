@@ -26,7 +26,7 @@ export default function Home() {
           avatar={post.user.image}
           postTitle={post.title}
           id={post.id}
-          comments={post.comments}
+          comments={post.comments!}
         />
       ))}
     </main>
